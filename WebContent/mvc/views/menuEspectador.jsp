@@ -13,7 +13,7 @@
 		
 		<div>
 			<button type="button" onclick="window.location.href=''">1. Buscar espectáculo</button>
-			<button type="button" onclick="window.location.href=''">2. Publicar crítia de espectáculo</button>
+			<button type="button" onclick="window.location.href=''">2. Publicar crítica de espectáculo</button>
 			<button type="button" onclick="window.location.href=''">3. Consultar críticas de espectáculos</button>
 			<button type="button" onclick="window.location.href=''">4. Eliminar crítica de espectáculo</button>
 			<button type="button" onclick="window.location.href=''">5. Valorar crítica de otro usuario</button>
