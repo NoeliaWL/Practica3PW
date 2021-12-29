@@ -23,6 +23,37 @@ import display.javabean.DatosConexionBean;
 public class registroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String nombre = "", apellidos = "", nick = "", email = "", password = "", tipoUsuario = "";
+		if(request.getParameter("nombre") != null) {
+			nombre = request.getParameter("nombre");
+		}
+		
+		if(request.getParameter("apellidos") != null) {
+			apellidos = request.getParameter("apellidos");
+		}
+		
+		if(request.getParameter("nick") != null) {
+			nick = request.getParameter("nick");
+		}
+		
+		if(request.getParameter("email") != null) {
+			email = request.getParameter("email");
+		}
+		
+		if(request.getParameter("password") != null) {
+			password = request.getParameter("password");
+		}
+		
+		if(request.getParameter("tipoUsuario") != null && request.getParameter("tipoUsuario") != "vacio") {
+			tipoUsuario = request.getParameter("tipoUsuario");
+		}
+		
+		if(nombre == "" && apellidos == "" && nick == "" && email == "" && password == "" && tipoUsuario == "") {
+			response.sendRedirect("mvc/views/registro.jsp");
+		}
+	}
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		DatosConexionBean datos = DatosConexionBean.getInstance();
 		
@@ -77,14 +108,12 @@ public class registroController extends HttpServlet {
 			
 			if(resultado == 1) {
 				HttpSession session = request.getSession();
-				CustomerBean customerBean = (CustomerBean) session.getAttribute("customerBean");
-			
-				if(customerBean == null) {
-					customerBean = new CustomerBean();
-				}
+				CustomerBean customerBean = new CustomerBean();
 				
 				customerBean.setCorreoUser(administrador.getCorreo());
 				customerBean.setTipo(Tipousuario.ADMINISTRADOR);
+				
+				session.setAttribute("customerBean", customerBean);
 				
 				System.out.println("Usuario registrado");
 				response.sendRedirect("mvc/views/menuAdministrador.jsp");
@@ -129,6 +158,7 @@ public class registroController extends HttpServlet {
 		}
 		else {
 			System.out.println("Introducir el tipo de usuario.");
+			response.sendRedirect("mvc/views/registro.jsp");
 		}
 	}
 }

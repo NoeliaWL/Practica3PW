@@ -7,7 +7,7 @@ public class DatosConexionBean implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private static DatosConexionBean instance = null;
-	
+		
 	private String DRIVER;
 	private String URL;
 	private String USUARIO;
@@ -31,7 +31,7 @@ public class DatosConexionBean implements java.io.Serializable {
 		
 		return instance;
 	}
-	
+
 	public String getDRIVER() {
 		return DRIVER;
 	}

@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletContext;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +20,21 @@ import display.javabean.DatosConexionBean;
 @WebServlet(name="loginAdministradorController", urlPatterns="/comprobarLoginAdministrador")
 public class loginAdministradorController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String email = "", password = "";
+		if(request.getParameter("email") != null) {
+			email = request.getParameter("email");
+		}
+		
+		if(request.getParameter("password") != null) {
+			password = request.getParameter("password");
+		}
+		
+		if(email == "" && password == "") {
+			response.sendRedirect("mvc/views/loginAdministradores.jsp");
+		}
+	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		DatosConexionBean datos = DatosConexionBean.getInstance();
@@ -57,14 +73,21 @@ public class loginAdministradorController extends HttpServlet {
 		if(adminBD.getCorreo().equals(administrador.getCorreo())) {
 			if(adminBD.getContrasena().equals(administrador.getContrasena())) {
 				HttpSession session = request.getSession();
-				CustomerBean customerBean = (CustomerBean) session.getAttribute("customerBean");
-			
-				if(customerBean == null) {
-					customerBean = new CustomerBean();
-				}
+				CustomerBean customerBean = new CustomerBean();
 				
 				customerBean.setCorreoUser(adminBD.getCorreo());
 				customerBean.setTipo(Tipousuario.ADMINISTRADOR);
+				
+				session.setAttribute("customerBean", customerBean);
+				
+				administrador.setUltimaConexion(LocalDateTime.now());
+				int status = dao.actualizarUltimaConexion(administrador, datos);
+				if(status == 1) {
+					System.out.println("Fecha de ultima conexion actualizada correctamente");
+				}
+				else {
+					System.out.println("Error al actualizar la fecha de última conexión");
+				}
 				
 				System.out.println("Login correcto");
 				response.sendRedirect("mvc/views/menuAdministrador.jsp");

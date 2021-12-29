@@ -5,6 +5,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Mi Aplicación Web</title>
+		
+		<link href = "/Practica3PW/css/formularios.css" type = "text/css" rel = "stylesheet"/>
 	</head>
 	<body>
 		<h1>Inicio sesión Espectador</h1>
@@ -16,8 +18,10 @@
 			<label for="password">Contraseña:</label>
 			<input type="password" name="password" />
 			
-			<input type="submit" value="Iniciar Sesión" />
-			<input type="button" value="Cancelar" onclick="window.location.href='../../index.html'" />
+			<div>
+				<input type="submit" value="Iniciar Sesión" />
+				<input type="button" value="Cancelar" onclick="window.location.href='../../index.html'" />
+			</div>
 		</form>
 	</body>
 </html>

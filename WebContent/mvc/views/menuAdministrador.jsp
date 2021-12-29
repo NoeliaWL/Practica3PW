@@ -12,12 +12,17 @@
 		<h1>Menú Administradores</h1>
 
 		<div>
-			<button type="button" onclick="window.location.href=''">1. Listado de usuarios</button>
-			<button type="button" onclick="window.location.href=''">2. Alta de espectáculo</button>
-			<button type="button" onclick="window.location.href=''">3. Añadir sesión de espectáculo</button>
-			<button type="button" onclick="window.location.href=''">4. Modificar sesión de espectáculo</button>
-			<button type="button" onclick="window.location.href=''">5. Cancelar sesión de espectáculo</button>
-			<button type="button" onclick="window.location.href='../controller/logoutController.jsp'">6. Cerrar Sesión</button>
+			<button type="button" onclick="window.location.href='../controller/listarUsuariosController.jsp'">1. Listado de usuarios</button>
+			<button type="button" onclick="window.location.href='/Practica3PW/altaespectaculo'">2. Alta de espectáculo</button>
+			<button type="button" onclick="window.location.href='/Practica3PW/altasesion'">3. Añadir sesión de espectáculo</button>
+			<button type="button" onclick="window.location.href='/Practica3PW/modificarsesion'">4. Modificar sesión de espectáculo</button>
+			<button type="button" onclick="window.location.href='/Practica3PW/cancelarsesion'">5. Cancelar sesión de espectáculo</button>
+		</div>
+		
+		<div>
+			<button type="button" onclick="window.location.href=''">Modificar datos usuario</button>
+			<button type="button" onclick="window.location.href='/Practica3PW/bajausuario'">Darse de baja</button>
+			<button type="button" onclick="window.location.href='../controller/logoutController.jsp'">Cerrar Sesión</button>
 		</div>
 	</body>
 </html>

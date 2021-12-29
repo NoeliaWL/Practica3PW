@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+form, form.div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 50%;
+}
+
+label, select, div {
+	margin-top: 2%;
+}
+
+div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}

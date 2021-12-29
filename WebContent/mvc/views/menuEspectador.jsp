@@ -17,7 +17,12 @@
 			<button type="button" onclick="window.location.href=''">3. Consultar críticas de espectáculos</button>
 			<button type="button" onclick="window.location.href=''">4. Eliminar crítica de espectáculo</button>
 			<button type="button" onclick="window.location.href=''">5. Valorar crítica de otro usuario</button>
-			<button type="button" onclick="window.location.href='../controller/logoutController.jsp'">6. Cerrar Sesión</button>
+		</div>
+		
+		<div>
+			<button type="button" onclick="window.location.href=''">Modificar datos usuario</button>
+			<button type="button" onclick="window.location.href=''">Darse de baja</button>
+			<button type="button" onclick="window.location.href='../controller/logoutController.jsp'">Cerrar Sesión</button>
 		</div>
 	</body>
 </html>

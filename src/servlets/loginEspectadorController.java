@@ -20,6 +20,21 @@ import display.javabean.DatosConexionBean;
 public class loginEspectadorController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String email = "", password = "";
+		if(request.getParameter("email") != null) {
+			email = request.getParameter("email");
+		}
+		
+		if(request.getParameter("password") != null) {
+			password = request.getParameter("password");
+		}
+		
+		if(email == "" && password == "") {
+			response.sendRedirect("mvc/views/loginEspectadores.jsp");
+		}
+	}
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		DatosConexionBean datos = DatosConexionBean.getInstance();
 		
