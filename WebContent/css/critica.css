@@ -1,0 +1,35 @@
+@charset "UTF-8";
+#mitabla{
+/*estilo de el cuerpo de nuestra tabla*/
+background-color: #1e8cbe;
+width:30%;
+margin:24px auto;
+border-left: 1px solid #ccc;
+border-right: 1px solid #ccc;
+font-family:helvetica,arial,sans-serif;
+font-weight:normal;
+text-transform: uppercase;
+text-align:center;
+}
+#mitabla th{
+/*estilo de los elementos(th)*/
+background-color: #278dbc;
+color:#fff;
+font-weight: normal;
+font-size:14px;
+padding: 8px;
+}
+#mitabla td{
+/*estilo a los elementos (td)*/
+width:1px;
+height: 1px;
+}
+
+#mitabla tr:nth-child(odd){
+/*para los colores de las filas impares*/
+background-color: #ffffff;
+}
+#mitabla tr:nth-child(even){
+/*para los colores de las filas pares*/
+background:#EDEDED;
+}

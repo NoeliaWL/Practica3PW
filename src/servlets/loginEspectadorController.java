@@ -72,14 +72,12 @@ public class loginEspectadorController extends HttpServlet {
 		if(adminBD.getCorreo().equals(espectador.getCorreo())) {
 			if(adminBD.getContrasena().equals(espectador.getContrasena())) {
 				HttpSession session = request.getSession();
-				CustomerBean customerBean = (CustomerBean) session.getAttribute("customerBean");
-			
-				if(customerBean == null) {
-					customerBean = new CustomerBean();
-				}
+				CustomerBean customerBean = new CustomerBean();
 				
 				customerBean.setCorreoUser(adminBD.getCorreo());
 				customerBean.setTipo(Tipousuario.ADMINISTRADOR);
+				
+				session.setAttribute("customerBean", customerBean);
 				
 				System.out.println("Login correcto");
 				response.sendRedirect("mvc/views/menuEspectador.jsp");
