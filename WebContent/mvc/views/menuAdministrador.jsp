@@ -20,7 +20,7 @@
 		</div>
 		
 		<div>
-			<button type="button" onclick="window.location.href=''">Modificar datos usuario</button>
+			<button type="button" onclick="window.location.href='/Practica3PW/updateUsuario'">Modificar datos usuario</button>
 			<button type="button" onclick="window.location.href='/Practica3PW/bajausuario'">Darse de baja</button>
 			<button type="button" onclick="window.location.href='../controller/logoutController.jsp'">Cerrar Sesión</button>
 		</div>

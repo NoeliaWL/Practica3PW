@@ -12,7 +12,7 @@
 		<h1>Menú Espectadores</h1>
 		
 		<div>
-			<button type="button" onclick="window.location.href=''">1. Buscar espectáculo</button>
+			<button type="button" onclick="window.location.href='/Practica3PW/buscarEspectaculo'">1. Buscar espectáculo</button>
 			<button type="button" onclick="window.location.href=''">2. Publicar crítica de espectáculo</button>
 			<button type="button" onclick="window.location.href=''">3. Consultar críticas de espectáculos</button>
 			<button type="button" onclick="window.location.href=''">4. Eliminar crítica de espectáculo</button>
@@ -20,8 +20,8 @@
 		</div>
 		
 		<div>
-			<button type="button" onclick="window.location.href=''">Modificar datos usuario</button>
-			<button type="button" onclick="window.location.href=''">Darse de baja</button>
+			<button type="button" onclick="window.location.href='/Practica3PW/updateUsuario'">Modificar datos usuario</button>
+			<button type="button" onclick="window.location.href='/Practica3PW/bajausuario'">Darse de baja</button>
 			<button type="button" onclick="window.location.href='../controller/logoutController.jsp'">Cerrar Sesión</button>
 		</div>
 	</body>

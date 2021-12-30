@@ -46,9 +46,7 @@
 			<label for="titulo">Introduce el titulo del espectáculo para añadir la sesión:</label>
 			<%
 				String tit = (String) session.getAttribute("tituloEspectaculo");
-				String aux = "";
 				if(tit != null) {
-					//aux = tit;
 			%>
 					<input type="text" name="titulo" value="<%=tit%>" disabled/>
 			<%
@@ -59,7 +57,6 @@
 			<%
 				}
 			%>
-			<!-- <input type="text" name="titulo" id="titulo" placeholder="<%=aux%>"/> -->
 			
 			<label for="sesion">Selecciona la sesión a añadir:</label>
 			<input type="date" name="sesion"/>

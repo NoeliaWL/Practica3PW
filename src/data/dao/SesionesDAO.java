@@ -59,14 +59,14 @@ public class SesionesDAO {
 				int id = rs.getInt("id");
 				Date fecha = rs.getDate("fecha");
 				Time hora = rs.getTime("hora");
+				int entradas = rs.getInt("totalEntradas");
 				
 				sesion = new SesionesDTO();
 				sesion.setId(id);
 				sesion.setFecha(fecha);
 				sesion.setHora(hora);
-				
-				System.out.println("fecha dao: " + fecha);
-				
+				sesion.setTotalEntradas(entradas);
+								
 				sesiones.add(sesion);
 			}
 			
@@ -102,6 +102,68 @@ public class SesionesDAO {
 			status = ps.executeUpdate();
 			
 			conexion.closeConnection();
+		}
+		catch(SQLException e) {
+			System.out.println("Codigo error: " + e.getErrorCode());
+			System.out.println("SQLState: " + e.getSQLState());
+			System.out.println("Mensaje error: " + e.getMessage());
+		}
+		
+		return status;
+	}
+	
+	public SesionesDTO consultarSesion(SesionesDTO sesionId, DatosConexionBean datos) {
+		SesionesDTO sesion = new SesionesDTO();
+		
+		try {
+			Properties prop = new Properties();
+			prop = datos.getSQL();
+			
+			Conexion conexion = new Conexion();
+			Connection con = conexion.getConnection(datos);
+			
+			PreparedStatement ps = con.prepareStatement(prop.getProperty("consultarSesionId"));
+			ps.setInt(1, sesionId.getId());
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int totalEntradas = rs.getInt("totalEntradas");
+				int entradasVendidas = rs.getInt("entradasVendidas");
+				
+				sesion = new SesionesDTO();
+				sesion.setTotalEntradas(totalEntradas);
+				sesion.setEntradasVendidas(entradasVendidas);
+			}
+			
+			conexion.closeConnection();
+		}
+		catch(SQLException e) {
+			System.out.println("Codigo error: " + e.getErrorCode());
+			System.out.println("SQLState: " + e.getSQLState());
+			System.out.println("Mensaje error: " + e.getMessage());
+		}
+		
+		return sesion;
+	}
+	
+	public int modificarSesion(SesionesDTO sesion, DatosConexionBean datos) {
+		int status = 0;
+		
+		try {
+			Properties prop = new Properties();
+			prop = datos.getSQL();
+			
+			Conexion conexion = new Conexion();
+			Connection con = conexion.getConnection(datos);
+			
+			PreparedStatement ps = con.prepareStatement(prop.getProperty("modificarSesion"));
+			ps.setDate(1, sesion.getFecha());
+			ps.setTime(2, sesion.getHora());
+			ps.setInt(3, sesion.getTotalEntradas());
+			ps.setInt(4, sesion.getId());
+			
+			status = ps.executeUpdate();
 		}
 		catch(SQLException e) {
 			System.out.println("Codigo error: " + e.getErrorCode());

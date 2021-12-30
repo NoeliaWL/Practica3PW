@@ -173,4 +173,34 @@ public class EspectadoresDAO {
 		
 		return status;
 	}
+	
+	public int actualizarUsuario(EspectadoresDTO user, DatosConexionBean datos) {
+		int status = 0;
+		
+		try {
+			Properties prop = new Properties();
+			prop = datos.getSQL();
+			
+			Conexion conexion = new Conexion();
+			Connection con = conexion.getConnection(datos);
+			
+			PreparedStatement ps = con.prepareStatement(prop.getProperty("actualizarUsuarioEspec"));
+			ps.setString(1, user.getNombre());
+			ps.setString(2, user.getApellidos());
+			ps.setString(3, user.getNick());
+			ps.setString(4, user.getContrasena());
+			ps.setString(5, user.getCorreo());
+			
+			status = ps.executeUpdate();
+			
+			conexion.closeConnection();
+		}
+		catch(SQLException e) {
+			System.out.println("Codigo error: " + e.getErrorCode());
+			System.out.println("SQLState: " + e.getSQLState());
+			System.out.println("Mensaje error: " + e.getMessage());
+		}
+		
+		return status;
+	}
 }
