@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Mi Aplicación Web</title>
 		
-		<link href = "/Practica3PW/css/formularios.css" type = "text/css" rel = "stylesheet"/>
+		<link href = "/Practica3PW/css/formulariosNoe.css" type = "text/css" rel = "stylesheet"/>
 	</head>
 	<body>
 		<h1>Formulario de registro</h1>
